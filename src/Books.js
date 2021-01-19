@@ -1,22 +1,19 @@
 import React, {Component} from 'react';
+import CategoryChanger from './CategoryChanger';
 
 class Book extends Component{
     render(){
+        const {book, books, changeCategory} = this.props;
+        // add fallbacks for missing cover images and title
+        const coverImg =book.imageLinks && book.imageLinks.thumbnail;
+        const title = book.title ? book.title : 'No title available';
         return(
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: 'url("http://books.google.com/books/content?id=pD6arNyKyi8C&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70Rw0CCwNZh0SsYpQTkMbvz23npqWeUoJvVbi_gXla2m2ie_ReMWPl0xoU8Quy9fk0Zhb3szmwe8cTe4k7DAbfQ45FEzr9T7Lk0XhVpEPBvwUAztOBJ6Y0QPZylo4VbB7K5iRSk&source=gbs_api")' }}></div>
-                    <div className="book-shelf-changer">
-                        <select>
-                            <option value="move" disabled>Move to...</option>
-                            <option value="currentlyReading">Currently Reading</option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
-                            <option value="none">None</option>
-                        </select>
-                    </div>
+                    <div className="book-cover" style={{width: 128, height: 192, backgroundImage: `url(${coverImg})` }}></div>
+                    <CategoryChanger book={book} books={books} changeCategory={changeCategory}/>
                 </div>
-                <div className="book-title">The Hobbit</div>
+                <div className="book-title">{title}</div>
                 <div className="book-authors">J.R.R. Tolkien</div>
             </div>
         )
