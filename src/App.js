@@ -17,7 +17,6 @@ componentDidMount() {
             books
         }))
     })
-    console.log(this.state.books)
 }
 changeCategory = (changedBook, category) => {
     BooksAPI.update(changedBook, category).then(response => {

@@ -4,9 +4,10 @@ import CategoryChanger from './CategoryChanger';
 class Book extends Component{
     render(){
         const {book, books, changeCategory} = this.props;
-        // add fallbacks for missing cover images and title
         const coverImg =book.imageLinks && book.imageLinks.thumbnail;
+        // add fallbacks for missing title, and author
         const title = book.title ? book.title : 'No title available';
+        const authors = book.authors ? book.authors : 'No author available';
         return(
             <div className="book">
                 <div className="book-top">
@@ -14,7 +15,7 @@ class Book extends Component{
                     <CategoryChanger book={book} books={books} changeCategory={changeCategory}/>
                 </div>
                 <div className="book-title">{title}</div>
-                <div className="book-authors">J.R.R. Tolkien</div>
+                <div className="book-authors">{authors}</div>
             </div>
         )
     }

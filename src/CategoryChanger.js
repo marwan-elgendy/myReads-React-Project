@@ -18,7 +18,7 @@ class CategoryChanger extends Component {
     // set current shelf to none as default
     let currentShelf = 'none';
 
-    // if book is in current list, set current shelf to book.shelf
+    // if book is in current category, set current shelf to book.shelf
     for (let item of books) {
       if (item.id === book.id) {
         currentShelf = item.shelf;
