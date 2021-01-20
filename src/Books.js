@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import CategoryChanger from './CategoryChanger';
+import NotFound from './img/No-image-found.jpg';
 
 class Book extends Component{
     render(){
         const {book, books, changeCategory} = this.props;
-        const coverImg =book.imageLinks && book.imageLinks.thumbnail;
-        // add fallbacks for missing title, and author
+        // add fallbacks for missing imag, title, and author
+        const coverImg =
+        book.imageLinks && book.imageLinks.thumbnail
+        ? book.imageLinks.thumbnail
+        : NotFound;
         const title = book.title ? book.title : 'No title available';
         const authors = book.authors ? book.authors : 'No author available';
         return(
